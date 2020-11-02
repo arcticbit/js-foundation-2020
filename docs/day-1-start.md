@@ -100,6 +100,12 @@ for (let i = 0; i < result.length; i++) {
   console.log(result[i]);
 }
 
+// objektnycklar eller array index
+for (let key of result) {
+  console.log(item);
+}
+
+// arrayvärden
 for (let item of result) {
   console.log(item);
 }
@@ -107,6 +113,10 @@ for (let item of result) {
 result.forEach((item) => {
   console.log(item);
 });
+
+while (condition) {
+  // ...
+}
 ```
 
 ## Conditionals
