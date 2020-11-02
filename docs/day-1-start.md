@@ -69,9 +69,7 @@
 
 ## Loopar
 
-Tre olika varianter, `for`, `for..of` och `Array.forEach`.
-Funktionellt ekvivalenta. Enda skillnaden är att Array.forEach inte
-går att avbryta eller manipulera exekveringen av.
+Tre olika varianter, `for`, `for..of` och `Array.forEach`. Funktionellt ekvivalenta. Enda skillnaden är att Array.forEach inte går att avbryta eller manipulera exekveringen av.
 
 ```js
 for (let i = 0; i < result.length; i++) {
@@ -85,6 +83,31 @@ for (let item of result) {
 result.forEach((item) => {
   console.log(item);
 });
+```
+
+## Conditionals
+
+`if`
+
+```js
+if (val) {
+} else {
+}
+```
+
+```js
+val != undefined ? doSomething() : doNothing();
+```
+
+```js
+switch (val) {
+  case 'adele':
+    doSomething();
+    break;
+  default:
+    doNothing();
+    break;
+}
 ```
 
 ## Annat

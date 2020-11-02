@@ -1,56 +1,57 @@
 'use strict';
 
-// const test = {
-//   exec: function () {
-//     console.log('test: ', this);
-//   },
-// };
-
-// test.exec();
-
-// const arrow = {
-//   exec: () => {
-//     console.log('arrow: ', this);
-//   },
-// };
-
-// arrow.exec();
+let result = [
+  {
+    id: 0,
+    artist: 'Adele',
+    album: '21..........',
+    url: 'https://google.com/',
+  },
+  {
+    id: 1,
+    artist: 'Frank Ocean',
+    album: 'Channel Orange',
+    url: 'https://google.com/',
+  },
+  {
+    id: 2,
+    artist: 'Gangstarr',
+    album: 'Full Clip',
+    url: 'https://google.com/',
+  },
+];
 
 $('#search').on('click', function () {
-  let result = [
-    {
-      id: 0,
-      artist: 'Adele',
-      album: '21..........',
-      url: 'https://google.com/',
-    },
-    {
-      id: 1,
-      artist: 'Frank Ocean',
-      album: 'Channel Orange',
-      url: 'https://google.com/',
-    },
-    {
-      id: 2,
-      artist: 'Gangstarr',
-      album: 'Full Clip',
-      url: 'https://google.com/',
-    },
-  ];
-
   console.log('Button was clicked');
 
-  // for (let i = 0; i < result.length; i++) {
-  //   console.log(result[i]);
-  // }
+  let term = $('#search-term')[0].value.toLowerCase();
 
-  // for (let item of result) {
-  //   console.log(item);
-  // }
+  if (!term) {
+    return;
+  }
 
-  result.forEach((item) => {
-    console.log(item);
-  });
-  $('#result').append('Hello world');
-  // console.log(result);
+  let filteredResults = filterResults(term);
+  render(filteredResults);
 });
+
+function render(items) {
+  $('#result').html('');
+  items.forEach((item) => {
+    $('#result').append(`
+    <div>
+      <a href="${item.url}">
+        ${item.artist} - ${item.album}
+      </a>
+    </div>
+  `);
+  });
+}
+
+function filterResults(term) {
+  return result.filter((item) => {
+    return (
+      item.artist.toLowerCase().includes(term) ||
+      item.album.toLowerCase().includes(term)
+    );
+  });
+}
