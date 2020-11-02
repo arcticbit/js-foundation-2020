@@ -39,6 +39,23 @@
 - Lambda gör inte det
 - Kan illustreras genom `this`.
 
+  ```js
+  const test = {
+    exec: function () {
+      console.log(this);
+    },
+  };
+
+  const arrow = {
+    exec: () => {
+      console.log(this);
+    },
+  };
+
+  test.exec(); // -> exec
+  arrow.exec(); // -> window
+  ```
+
 ## Typer
 
 - Allt är objekt
@@ -49,6 +66,26 @@
 - Enkla "fnuttar" som standard, växla till dubbla om
   strängen innehåller apostrofer. Funktionellt samma.
 - Backticks (``) för att skapa template strings. Interpolering sker via ${}, ex. `Hello \${target}`
+
+## Loopar
+
+Tre olika varianter, `for`, `for..of` och `Array.forEach`.
+Funktionellt ekvivalenta. Enda skillnaden är att Array.forEach inte
+går att avbryta eller manipulera exekveringen av.
+
+```js
+for (let i = 0; i < result.length; i++) {
+  console.log(result[i]);
+}
+
+for (let item of result) {
+  console.log(item);
+}
+
+result.forEach((item) => {
+  console.log(item);
+});
+```
 
 ## Annat
 
