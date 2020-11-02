@@ -134,6 +134,48 @@ switch (val) {
 }
 ```
 
+## Promises
+
+Används för att utföra asynkrona operationer, exempelvis
+vid interaktion med webbläsarens http klient (`fetch` och
+`XMLHttpRequest`).
+
+Non-blocking, dvs. efterföljande kod
+fortsätter exekveras och callbackfunktionen anropas när
+promiset har resolve:ats.
+
+- Callbacks för promises som resolvats sker genom `then()`.
+- Callbacks för promises som failar, sker genom `catch()`.
+
+Moderna EcmaScript-standarder har även tillägget async/await,
+vilket är snarlikt, men utan `.then()` och `.catch()` nestingen som promises introducerar.
+
+## Classer
+
+Fungerar som i de flesta andra objektorienterade språk.
+
+Konstruktor som kan användas vid instansering av objektet,
+metoder och fält som kan användas för beteende och data.
+
+Refereras till via keywordet `this`.
+
+```js
+class Search {
+  constructor(baseUrl) {
+    this.baseUrl = baseUrl;
+  }
+
+  exec(term) {
+    return fetch(this.baseUrl)
+      .then((r) => r.json())
+      .catch(() => []);
+  }
+}
+```
+
+Fungerar i de flesta moderna webbläsarna, men inte i
+Internet Explorer. Där krävs även någon form av polyfill (vilket vi ska gå igenom imorgon).
+
 ## Annat
 
 - Emmet, expanderar abbreveringar till fullständig html, ex
@@ -145,4 +187,12 @@ switch (val) {
     </div>
   </div>
   ```
-- JavaScript Wat, https://www.destroyallsoftware.com/talks/wat
+- JavaScript Wat
+  https://www.destroyallsoftware.com/talks/wat
+
+### Böcker
+
+- JavaScript: The Good Parts
+  https://www.amazon.com/JavaScript-Good-Parts-Douglas-Crockford/dp/0596517742#ace-g9859629705
+- Eloquent JavaScript
+  https://www.amazon.com/Eloquent-JavaScript-3rd-Introduction-Programming/dp/1593279507/
