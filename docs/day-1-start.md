@@ -1,7 +1,7 @@
-## Getting started
+## Förberedelser
 
-1. Install NodeJS
-2. Skapa projektkatalog
+1. Installera NodeJS från https://nodejs.org
+2. Skapa en projektkatalog
 3. Initiera npm (node package manager)
    `npm init`
 4. Installera browser-sync
@@ -34,38 +34,62 @@
 
 ## Funktioner
 
-- Två varianter, `function()` `function hello()` eller arrow functions / lambda. `() => {}`
-- Function skapar nytt scope
-- Lambda gör inte det
-- Kan illustreras genom `this`.
+- Tre varianter:
+  - Anonyma function statements:
+    ```js
+    function() {
+      // ...
+    }
+    ```
+  - Namngivna function statements:
+    ```js
+    function hello() {
+      // ...
+    }
+    ```
+  - Arrow functions (eller lambda):
+    ```
+    const aFunction = () => {
+      // ...
+    }
+    ```
+- Function statements skapar ett nytt block scope,
+  vilket gör att `this` förändras.
+- Arrow functions gör inte det.
 
-  ```js
-  const test = {
-    exec: function () {
-      console.log(this);
-    },
-  };
+```js
+const test = {
+  exec: function () {
+    console.log(this);
+  },
+};
 
-  const arrow = {
-    exec: () => {
-      console.log(this);
-    },
-  };
+const arrow = {
+  exec: () => {
+    console.log(this);
+  },
+};
 
-  test.exec(); // -> exec
-  arrow.exec(); // -> window
-  ```
+test.exec(); // -> exec
+arrow.exec(); // -> window
+```
 
 ## Typer
 
-- Allt är objekt
-- Primitiva typer: number, string, boolean, null, undefined
+- Allt i JavaScript är objekt
+- Finns ett fåtala primitiva typer:
+  - `number`
+  - `String`
+  - `Boolean`
+  - `null`
+  - `undefined`
 
 ## Strängar
 
-- Enkla "fnuttar" som standard, växla till dubbla om
-  strängen innehåller apostrofer. Funktionellt samma.
-- Backticks (``) för att skapa template strings. Interpolering sker via ${}, ex. `Hello \${target}`
+- Single quote används som standard, växla till dubbla om strängen i sig  
+  innehåller single quotes. Funktionellt samma.
+- \`, även kallade backticks, används för att skapa template strings.
+  Interpolering sker med hjälp av `${}`, ex. `Hello \${target}`
 
 ## Loopar
 
@@ -112,4 +136,13 @@ switch (val) {
 
 ## Annat
 
-- Emmet
+- Emmet, expanderar abbreveringar till fullständig html, ex
+  `.container>.row>.column` som efter tabbning blir:
+  ```html
+  <div class="container">
+    <div class="row">
+      <div class="column"></div>
+    </div>
+  </div>
+  ```
+- JavaScript Wat, https://www.destroyallsoftware.com/talks/wat
