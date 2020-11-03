@@ -1,4 +1,4 @@
-class Search {
+export class Search {
   constructor(baseUrl) {
     this.baseUrl = baseUrl;
   }

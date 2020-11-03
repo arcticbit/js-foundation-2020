@@ -2,7 +2,9 @@ const spinner = 'https://media3.giphy.com/media/3oEjI6SIIHBdRxXI40/200.gif';
 const defaultCover =
   'https://static.tumblr.com/2lqtwbf/coolyqooj/untitled-1.png';
 
-class Render {
+export const Foo = 'foo';
+
+export class Render {
   constructor(elem) {
     this.element = elem;
   }
