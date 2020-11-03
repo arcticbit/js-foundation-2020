@@ -282,3 +282,7 @@ Vi utför en handling i vår enhet.
 
 Vi inspekterar resultatet och säkerställer att det är vad
 vi förväntar oss.
+
+## Annat
+
+- https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS

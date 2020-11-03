@@ -3,7 +3,7 @@ import $ from 'jquery';
 import { Search } from './search/search';
 import { Render } from './render/render';
 
-const search = new Search('data.json');
+const search = new Search('http://localhost:3000/api/search');
 const render = new Render($('#result'));
 
 $('#search').click(() => {
