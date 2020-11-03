@@ -1,6 +1,19 @@
 const fs = require('fs');
 const path = require('path');
 
+// Stränginterpolering för att skapa URL:n
+//  Giltigt exempel:
+//  https://api.spotify.com/v1/search?q=Adele&type=artist
+
+// Fetch request till url:n
+// andra argument till fetch: objekt som innehåller konfiguration
+// ex:
+// fetch(enUrl, {
+//   headers: {
+//     Authorization: 'Bearer ' + Token
+//   }
+// }).then(r => ...)
+
 class SpotifyApi {
   search() {
     // Resolvar filpathen
