@@ -24,12 +24,12 @@ $('#search').click(() => {
         render.error();
       })
       .then((data) => {
-        let filtered = search.filter(data, term);
-        if (filtered.length <= 0) {
+        if (data.length <= 0) {
           render.noResult();
           return;
         }
-        render.result(filtered);
+        console.log(JSON.stringify(data, null, 2));
+        render.result(data);
       })
       .catch((e) => {
         console.error(e);

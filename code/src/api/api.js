@@ -1,6 +1,4 @@
-const fs = require('fs');
-const path = require('path');
-
+require('isomorphic-fetch');
 // Stränginterpolering för att skapa URL:n
 //  Giltigt exempel:
 //  https://api.spotify.com/v1/search?q=Adele&type=artist
@@ -14,21 +12,35 @@ const path = require('path');
 //   }
 // }).then(r => ...)
 
+const token =
+  'BQAsfRUbbpOrYR5XekwLMN7ltb0vwx_eE1xDgOXeNSZHY6S3wwWq6UqzzaSfN7Ukunqgeidbt7vIaw2f7JnZwiy1yfxw0yrEAhYLQEh6S_Hif-yBX4FNoXqn9hWyb85CbJaAoPeWunFictjX';
+const baseUrl = 'https://api.spotify.com/v1/search';
+
 class SpotifyApi {
-  search() {
-    // Resolvar filpathen
-    let filePath = path.resolve(__dirname, 'data.json');
-    console.log(filePath);
+  transform(data) {
+    return data.albums.items.map((item) => {
+      return {
+        id: item.id,
+        artist: item.artists[0].name || 'Unknown Artist',
+        album: item.name,
+        cover: item.images[0].url,
+        url: item.external_urls.spotify,
+      };
+    });
+  }
 
-    // Läser filens innehåll
-    let rawOutput = fs.readFileSync(filePath);
-    let output = JSON.parse(rawOutput);
+  search(term) {
+    const headers = {
+      Authorization: 'Bearer ' + token,
+    };
 
-    // går att manipulera, ex:
-    // output.push({ title: 'En bok', author: 'En författare', pages: 200 });
+    const url = `${baseUrl}?q=${term}&type=artist,album&limit=10`;
 
-    // Returnerar innehållet
-    return output;
+    return fetch(url, { headers })
+      .then((r) => r.json())
+      .then((r) => {
+        return this.transform(r);
+      });
   }
 }
 
